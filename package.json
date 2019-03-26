@@ -10,6 +10,7 @@
     "react": "^16.8.3",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.3",
+    "react-emojione": "^5.0.1",
     "react-linkify": "^0.2.2",
     "react-native-hyperlink": "0.0.14",
     "react-scripts": "2.1.5",

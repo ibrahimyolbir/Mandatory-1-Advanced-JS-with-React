@@ -3,6 +3,7 @@ import socketIOClient from "socket.io-client";
 import './App.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
+import {emojify} from 'react-emojione';
 import Login from './Login';
 const Linkify = require('linkifyjs/react');
 ///////////////////////////////////////////////////
@@ -17,7 +18,9 @@ window.setInterval(function () {
 ///////////////////////////////////////////////////
 function clickableLinks(text) {
   var options = {/* … */ };
-  return <Linkify tagName="span" options={options}>{text}</Linkify>;
+  let eOptions = {style: {height: 18, width: 18, position: 'relative', top: '-1px'}}
+  let content = emojify(text, eOptions);
+  return <Linkify tagName="span" options={options}>{content}</Linkify>;
 }
 ///////////////////////////////////////////////////
 ///////////////// Close Dropdown /////////////////
@@ -77,8 +80,9 @@ class App extends Component {
             content: this.state.message
           }, (response) => {
             console.log(response);
+            this.setState({messages: [...this.state.messages, response.data.newMessage]});
           });
-        this.setState({ message: '' });
+          
 
       }
     }
